@@ -13,6 +13,8 @@ services:
       - 443:443
     depends_on:
       - api
+    networks:
+      - antidote
   api:
     container_name: api
     build:
@@ -26,7 +28,9 @@ services:
     environment:
         - NODE_ENV=development
         - PORT=8080
+      networks:
+        - antidote
 networks:
   default:
     external:
-      name: antidoteDesign_default
+      name: antidote

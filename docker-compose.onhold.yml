@@ -9,6 +9,8 @@ services:
       - 443:443
     depends_on:
       - api
+    networks:
+      - antidote
   api:
     container_name: api
     build:
@@ -16,8 +18,9 @@ services:
         dockerfile: dockerfile
     ports:
         - '8088:8080'
-    
-networks:
-  default:
-    external:
-      name: antidoteDesign_default
+    networks:
+      - antidote
+
+  networks:
+    antidote:
+          driver: "bridge"
