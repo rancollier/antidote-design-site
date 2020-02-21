@@ -2,4 +2,8 @@
 .env
 client/node_modules
 api/node_modules
-certs/*.pem
+# !certs/*.pem
+certs/antidote-design.net-key.pem
+certs/antidote-design.net.pem
+certs/fullchain.pem
+certs/privkey.pem
