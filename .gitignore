@@ -2,4 +2,4 @@
 .env
 client/node_modules
 api/node_modules
-certs/*
+certs/*.pem
