@@ -1,19 +1,22 @@
 version: '3.7'
 
 services:
-  nginx: 
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/html:/etc/nginx/html
-      - ./certs:/etc/nginx/certs
-    # command: "echo antodote-design.test"
+  nginx:
+    volumes: 
+      - ./certs:/etc/letsencrypt/live/antidote-design.net
+    environment:
+      - SERVER_NAME="antidote-design.test"
     depends_on:
       - api
   api:
     volumes:
-        - './api:/usr/src/app'
-        - '/usr/src/app/node_modules'
-    command: [ "nodemon", "server.js" ]
+        - './api:/home/node/app/'
+        - '/home/node/app/node_modules'
+
+        # - '.:/api'
+        # - '/api/node_modules'
+    command: [ "nodemon","server.js" ]
+    # command: [ "node_modules/.bin/nodemon","server.js" ]
     environment:
         - NODE_ENV=development
         - PORT=8080

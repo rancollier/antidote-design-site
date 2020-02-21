@@ -15,7 +15,7 @@ COPY --chown=node:node . .
 # CMD [ "node", "app.js" ]
 
 
-# RUN npm install -g nodemon
+RUN npm install -g nodemon
 # CMD [ "nodemon", "server.js" ]
 # EXPOSE 8080
 # CMD [ "node", "server.js" ]
