@@ -2,11 +2,28 @@ version: '3.7'
 
 services:
   nginx: 
-    
+    environment:
+      - SERVER_NAME="antidote-design.test"
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
     depends_on:
       - api
   api:
-    
+    command: [ "node", "server.js" ]
     environment:
         - NODE_ENV=production
         - PORT=8080
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - webserver
+    command: certonly --webroot --webroot-path=/var/www/html --email ${EMAIL} --agree-tos --no-eff-email --staging -d ${URL}  -d www.${URL}
+  volumes:
+    certbot-etc:
+    certbot-var:  

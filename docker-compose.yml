@@ -4,6 +4,9 @@ services:
   nginx: 
     image: nginx:alpine
     container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/html:/etc/nginx/html
     ports:
       - 80:80
       - 443:443
@@ -20,7 +23,16 @@ services:
         - antidote
     ports:
         - '8088:8080'
+    restart: unless-stopped
     
 networks:
   antidote:
         driver: "bridge"
+# volumes:
+#   nginx-html:
+#     driver: local
+#     driver_opts:
+#         type: none
+#         device: ./nginx/html
+#         o: bind
+
