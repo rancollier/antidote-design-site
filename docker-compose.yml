@@ -1,16 +1,16 @@
 version: '3.7'
 
 services:
-  nginx: 
-    image: nginx:alpine
-    container_name: nginx
-    ports:
-      - 80:80
-      - 443:443
-    networks:
-      - antidote
-    depends_on:
-      - api
+  # nginx: 
+  #   image: nginx:alpine
+  #   container_name: nginx
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   networks:
+  #     - antidote
+  #   depends_on:
+  #     - api
   api:
     container_name: api
     build:
@@ -19,7 +19,9 @@ services:
     networks:
         - antidote
     ports:
-        - '8088:8080'
+        - '8080:8080'
+    environment: 
+      PORT: 8080
     
 networks:
   antidote:

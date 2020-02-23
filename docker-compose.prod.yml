@@ -1,12 +1,16 @@
 version: '3.7'
 
 services:
-  nginx: 
-    
-    depends_on:
-      - api
+  # nginx: 
+  #   image: nginx:alpine
+  #   container_name: nginx
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   networks:
+  #     - antidote
+  #   depends_on:
+  #     - api
   api:
-    
-    environment:
-        - NODE_ENV=production
-        - PORT=8080
+    command: 
+      ['node', 'server.js']

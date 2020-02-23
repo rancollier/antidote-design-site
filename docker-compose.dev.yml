@@ -1,17 +1,28 @@
 version: '3.7'
 
 services:
-  nginx: 
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/html:/etc/nginx/html
-      - ./certs:/etc/nginx/certs
-    depends_on:
-      - api
+  # nginx: 
+  #   image: nginx:alpine
+  #   container_name: nginx
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   networks:
+  #     - antidote
+  #   depends_on:
+  #     - api
   api:
     volumes:
-        - './api:/usr/src/app'
-        - '/usr/src/app/node_modules'
-    environment:
-        - NODE_ENV=development
-        - PORT=8080
+      - './api:/api'
+      - './api/views:/api/views'
+      - '/api/node_modules'
+    command: 
+      ['node', 'server.js']
+
+# volumes:
+#   node_src:
+#     driver: local
+#     driver_opts:
+#         type: none
+#         device: ./api/
+#         o: bind
