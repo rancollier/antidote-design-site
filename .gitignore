@@ -2,5 +2,4 @@
 .env
 client/node_modules
 api/node_modules
-data/certbot/conf/live/antidote-design.net/fullchain.pem
-data/certbot/conf/live/antidote-design.net/privkey.pem
+data/
