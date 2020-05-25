@@ -1,16 +1,21 @@
 version: '3.7'
 
 services:
-  # nginx: 
-  #   image: nginx:alpine
-  #   container_name: nginx
-  #   ports:
-  #     - 80:80
-  #     - 443:443
-  #   networks:
-  #     - antidote
-  #   depends_on:
-  #     - api
+  nginx: 
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - antidote
+    depends_on:
+      - api
   api:
+    volumes:
+      - './api:/api'
+      - './api/views:/api/views'
+      - '/api/node_modules'
     command: 
       ['node', 'server.js']
+

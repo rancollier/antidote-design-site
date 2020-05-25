@@ -11,6 +11,22 @@ services:
       - antidote
     depends_on:
       - api
+  client:
+    container_name: client
+    networks:
+      - antidote
+    build:
+        context: ./client
+        dockerfile: Dockerfile
+    volumes: 
+      - './client:/usr/src/app'
+      - './client/node_modules:/usr/src/app/node_modules'
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    command:
+        ['npm','start']
   api:
     volumes:
       - './api:/api'
