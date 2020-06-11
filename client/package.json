@@ -17,7 +17,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "set HTTPS=true&&react-scripts build",
+    "build-docker": "set HTTPS=true&&react-scripts build && mv build /usr/share/nginx/html",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

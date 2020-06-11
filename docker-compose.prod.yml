@@ -1,21 +1,19 @@
 version: '3.7'
 
 services:
+  
+
   nginx: 
-    image: nginx:alpine
+    
     container_name: nginx
+    image: built-static
+    volumes: 
+      - ./data/certbot/conf/live/antidote-design.net:/etc/letsencrypt/live/antidote-design.net
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d/nginx.prod.conf:/etc/nginx/conf.d/default.conf
     ports:
       - 80:80
       - 443:443
     networks:
       - antidote
-    depends_on:
-      - api
-  api:
-    volumes:
-      - './api:/api'
-      - './api/views:/api/views'
-      - '/api/node_modules'
-    command: 
-      ['node', 'server.js']
-
+    command: ["nginx", "-g", "daemon off;"]
