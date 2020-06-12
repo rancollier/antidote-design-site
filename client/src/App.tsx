@@ -25,7 +25,7 @@ const App: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Randy Collier
+          Front-End Engineer
         </a>
       </header>
     </div>
