@@ -6,17 +6,26 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
+        <a 
+          href="https://www.linkedin.com/in/randy-collier-3a29759/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          <img style={{"borderRadius": "50%"}} src="/assets/rcollier.jpg" />
+        </a>
+
+        <h1
+          className="h1"
+        >
+          Randy Collier
+        </h1>
+        <a
+          className="App-link"
+          href="https://www.linkedin.com/in/randy-collier-3a29759/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Randy Collier
         </a>
       </header>
     </div>
